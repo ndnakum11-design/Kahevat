@@ -8,6 +8,25 @@
   <meta property="og:title" content="Kahevat – Gujarati Proverbs App">
   <meta property="og:description" content="1200+ ગુજરાતી કહેવત, અર્થ સાથે. Free Download on Play Store.">
   <meta property="og:image" content="https://play-lh.googleusercontent.com/kahevat-banner">
+  <!-- Google Analytics G-V67NBS1KG0 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V67NBS1KG0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V67NBS1KG0');
+    // Track Play Store button clicks
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('a[href*="play.google.com"]')) {
+        gtag('event', 'play_store_click', {
+          'event_category': 'App Download',
+          'event_label': 'Kahevat Play Store',
+          'value': 1
+        });
+      }
+    });
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
@@ -585,6 +604,54 @@
       fp.style.opacity = '1';
     }, 500);
   }, 4000);
+  // Handle /go redirect
+  if (window.location.pathname.includes('/go') || 
+      window.location.search.includes('go') ||
+      window.location.hash === '#go') {
+    window.location.replace("https://play.google.com/store/apps/details?id=com.gujarati.kahevatsangrah");
+  }
 </script>
+
+<!-- ── FLOATING DOWNLOAD BUTTON (always visible) ── -->
+<style>
+  .fab {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #c8a45a, #8a6020);
+    color: #090805;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 14px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(200,164,90,0.5), 0 8px 32px rgba(0,0,0,0.4);
+    animation: fabBounce 2s ease infinite;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .fab:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 40px rgba(200,164,90,0.7);
+  }
+  .fab:active { transform: scale(0.96); }
+  @keyframes fabBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .fab-icon { font-size: 20px; }
+</style>
+
+<a href="https://play.google.com/store/apps/details?id=com.gujarati.kahevatsangrah"
+   class="fab" target="_blank" rel="noopener">
+  <span class="fab-icon">📲</span>
+  FREE DOWNLOAD
+</a>
+
 </body>
 </html>
